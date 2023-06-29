@@ -14,16 +14,15 @@ def input_names_number() -> int:
         break
     return names_number
 
-def create_persons(names_number: int) -> list[list[str, str, str]]:
+def create_persons(names_number: int) -> list[list[str]]:
     persons_list = []
-    while  names_number > 0:
+    for i in range(names_number):
         rp = RussianNames()
         person_data = rp.get_person().split(' ')
         persons_list.append(person_data)
-        names_number -= 1
     return persons_list
 
-def wb_filler(persons_list: list[list[str, str, str]]) -> None:
+def wb_filler(persons_list: list[list[str]]) -> None:
     wb = openpyxl.Workbook()
     ws = wb.active
     ws.append(['Номер','Фамилия', 'Имя', 'Отчество'])
