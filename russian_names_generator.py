@@ -14,10 +14,15 @@ def input_names_number() -> int:
         break
     return names_number
 
-def create_person() -> tuple[str, str, str]:
-    rp = RussianNames()
-    person_tuple = rp.get_person().split(' ')
-    return person_tuple
+def create_persons(names_number: int) -> list[[str, str, str]]:
+    persons_list = []
+    while  names_number > 0:
+        rp = RussianNames()
+        person_data = rp.get_person().split(' ')
+        persons_list.append(person_data)
+        names_number -= 1
+    print(persons_list)
+    return persons_list
 
 def wb_filler(names_tuple: tuple[str, str, str]) -> None:
     wb = openpyxl.Workbook()
@@ -27,5 +32,5 @@ def wb_filler(names_tuple: tuple[str, str, str]) -> None:
 
 
 if __name__ == '__main__':
-    first_tuple = create_person()
-    wb_filler(first_tuple)
+    persons_list = create_persons(input_names_number())
+#    wb_filler(first_tuple)
