@@ -10,10 +10,10 @@ def create_person() -> tuple[str, str, str]:
 def wb_filler(names_tuple: tuple[str, str, str]) -> None:
     wb = openpyxl.Workbook()
     ws = wb.active
-    ws['A1'].value = names_tuple[0]
+    ws.append(names_tuple)
     wb.save('sample.xlsx')
 
 
 if __name__ == '__main__':
-    rp = RussianNames()
-    print(create_person())
+    first_tuple = create_person()
+    wb_filler(first_tuple)
