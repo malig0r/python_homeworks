@@ -1,6 +1,18 @@
 from russian_names import RussianNames 
 import openpyxl
 
+def input_names_number() -> int:
+    while True:
+        try:
+            names_number = int(input('Введите количество личностей для создания\n'))
+        except:
+            print('Неверное положительное целое число')
+            continue
+        if names_number <= 0:
+            print('Неверное положительное целое число')
+            continue
+        break
+    return names_number
 
 def create_person() -> tuple[str, str, str]:
     rp = RussianNames()
