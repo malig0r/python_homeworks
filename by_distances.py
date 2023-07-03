@@ -20,8 +20,8 @@ def distance(lat1: float, long1: float, lat2: float, long2: float) -> float:
         cos(lat1) * cos(lat2) * cos(long1 - long2))
 
 
-def build_distance_table(coordinates: {str: [float]}) -> list:
-    """Returns a list[list[str, str, float] with cities and direct distance between them"""
+def build_distance_table(coordinates: dict[str, list[float]]) -> list[list[str]]:
+    """Returns a list with [0] - list of city names, [1:] - [city name, *distance to other cities]"""
     data_table = []
     first_row = []
     for i, (city_name, (lat1, lon1)) in enumerate(coordinates.items()):
