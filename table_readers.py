@@ -51,8 +51,8 @@ class XLSXTableReader(TableReader):
 
 
 if __name__ == "__main__":
-#    reader = CSVTableReader('output.csv')
-#    print(reader.read())
+    reader = CSVTableReader('output.csv')
+    print(reader.read())
     reader = XLSXTableReader('output.xlsx')
     print(reader.read())
 
