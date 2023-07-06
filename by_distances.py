@@ -24,14 +24,14 @@ def build_distance_table(coordinates: dict[str, list[float]]) -> list[list[str]]
     """Returns a list with [0] - list of city names, [1:] - [city name, *distance to other cities]"""
     data_table = []
     first_row = []
-    for i, (city_name, (lat1, lon1)) in enumerate(coordinates.items()):
+    for city_name, (lat1, lon1) in coordinates.items():
         first_row.append(city_name)
     first_row.insert(0, ' ')
     data_table.append(first_row)
-    for i, (city_name, (lat1, lon1)) in enumerate(coordinates.items()):
+    for city_name, (lat1, lon1) in coordinates.items():
         distance_table = []
-        for j, (other_city_name, (lat2, lon2)) in enumerate(coordinates.items()):
-            if i != j:
+        for other_city_name, (lat2, lon2) in coordinates.items():
+            if city_name != other_city_name:
                 distance_table.append(f'{distance(lat1, lon1, lat2, lon2):.2f}')
             else: 
                 distance_table.append(' ')
@@ -52,7 +52,7 @@ if __name__ == '__main__':
         'Могилев': ["53° 55' 0''", "30° 20' 41''"]
     }
     cities_radians_dict = {}
-    for i, (city_name, (lat, lon)) in enumerate(CITIES.items()):
+    for city_name, (lat, lon) in CITIES.items():
         cities_radians_dict.update({city_name: [to_radians(lat), to_radians(lon)]})
     data_table = build_distance_table(cities_radians_dict)
     writer = HTMLTableWriter('output.html')
