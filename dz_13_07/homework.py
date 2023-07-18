@@ -5,8 +5,6 @@ def db_adjuster(*args):
     cursor = conn.cursor()
     cursor.execute('''CREATE TABLE IF NOT EXISTS tab_1(id INTEGER PRIMARY KEY AUTOINCREMENT, col_1 INT)''')
     match len(args):
-        case 0:
-            print("function must be called with at least one argument")
         case 1:
             cursor.execute('''INSERT INTO tab_1(col_1) VALUES (3)''')
             conn.commit()
